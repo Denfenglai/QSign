@@ -27,7 +27,7 @@ do
 export NEWT_COLORS='
 root=,yellow
 '
-sign=$(whiptail \
+menu=$(whiptail \
 --title "签名服务器管理" \
 17 40 9 \
 "1" "安装签名服务器" \
@@ -42,7 +42,7 @@ sign=$(whiptail \
 
 feedback=$?
 if [ $feedback = 0 ];then
-    if [ $sign = 1 ];then
+    if [ $menu = 1 ];then
         # 新目录
         if [ ! -d /sign ];then
             mkdir /sign
@@ -132,7 +132,7 @@ if [ $feedback = 0 ];then
 fi
         fi
     
-    if [ $sign = 2 ];then
+    if [ $menu = 2 ];then
     if [ -d /sign/unidbg-fetch-qsign ];then
         start=$(whiptail \
         --title "启动QSign" \
@@ -163,7 +163,7 @@ fi
     fi
 fi
     
-    if [ $sign = 3 ];then
+    if [ $menu = 3 ];then
         clear
         pm2 ls
         echo -e "\e[34m请输入你要关闭的进程名称（如：8.9.68）\e[0m"
