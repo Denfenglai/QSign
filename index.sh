@@ -131,7 +131,7 @@ fi
         ;;
     
     "2")
-        if [ -d /sign/unidbg-fetch-qsign ];then
+    if [ -d /sign/unidbg-fetch-qsign ];then
         start=$(whiptail \
         --title "启动QSign" \
         --menu "请选择你要启动的版本" \
@@ -158,9 +158,6 @@ fi
         pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=txlib/$version"
     fi
     
-    else 
-        echo -e "\e[31m请先安装签名服务器\e[0m"
-        exit 1
     fi
     
     "3")
