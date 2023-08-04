@@ -37,8 +37,6 @@ sign=$(whiptail \
 "7" "前台启动"  \
 "8" "卸载相关内容" \
 3>&1 1>&2 2>&3)
-feedback=$?
-if [ $feedback = 0 ];then
     case $sign in
     "1")
         # 新目录
@@ -177,7 +175,3 @@ fi
         exit
         ;;
     esac
-    
-else
-  exit 0
-fi
