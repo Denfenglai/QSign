@@ -37,7 +37,7 @@ sign=$(whiptail \
 "7" "前台启动"  \
 "8" "卸载相关内容" \
 3>&1 1>&2 2>&3)
-    case $sign in
+case $sign in
     "1")
         # 新目录
         if [ ! -d /sign ];then
@@ -169,9 +169,5 @@ fi
         else
             echo -e "\e[31m请输入正确的进程名称！\e[0m"
         fi
-        ;;
-    *)
-        echo "还在咕咕中...通宵没睡要猝死啦~"
-        exit
         ;;
     esac
