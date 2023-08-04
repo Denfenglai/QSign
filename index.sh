@@ -74,7 +74,7 @@ install_whiptail
 
 while true; do
 
-  DF=$(whiptail \
+  menu=$(whiptail \
     --title "签名服务器管理" \
     --menu "QSign" \
     17 40 9 \
