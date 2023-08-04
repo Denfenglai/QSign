@@ -22,6 +22,8 @@ if ! command -v whiptail >/dev/null 2>&1; then
   apt install -y whiptail
 fi
 
+while true
+do
 export NEWT_COLORS='
 root=,yellow
 '
@@ -37,8 +39,10 @@ sign=$(whiptail \
 "7" "前台启动"  \
 "8" "卸载相关内容" \
 3>&1 1>&2 2>&3)
-case $sign in
-    "1")
+
+feedback=$?
+if [ $feedback = 0 ];then
+    if [ $sign = 1 ];then
         # 新目录
         if [ ! -d /sign ];then
             mkdir /sign
@@ -126,9 +130,9 @@ case $sign in
         fi
     fi
 fi
-        ;;
+        fi
     
-    "2")
+    if [ $sign = 2 ];then
     if [ -d /sign/unidbg-fetch-qsign ];then
         start=$(whiptail \
         --title "启动QSign" \
@@ -157,9 +161,9 @@ fi
     fi
     
     fi
-    ;;
+fi
     
-    "3")
+    if [ $sign = 3 ];then
         clear
         pm2 ls
         echo -e "\e[34m请输入你要关闭的进程名称（如：8.9.68）\e[0m"
@@ -169,5 +173,9 @@ fi
         else
             echo -e "\e[31m请输入正确的进程名称！\e[0m"
         fi
-        ;;
-    esac
+    fi
+    
+else
+    exit
+    fi
+    done
