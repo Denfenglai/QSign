@@ -140,25 +140,23 @@ fi
         "2" "8.9.68" \
         "3" "8.9.70[推荐]" \
         3>&1 1>&2 2>&3 )
-        case $start in
-    "1")
+    if [ $start = 1 ];then
         version=8.9.63
         cd /sign/unidbg-fetch-qsign
         pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=txlib/$version"
-        ;;
+    fi
         
-    "2")
+    if [ $start = 2 ];then
         version=8.9.68
         cd /sign/unidbg-fetch-qsign
         pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=txlib/$version"
-        ;;
+    fi
         
-    "3")
+    if [ $start = 3 ];then
         version=8.9.70
         cd /sign/unidbg-fetch-qsign
         pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=txlib/$version"
-        ;;
-    esac
+    fi
     
     else 
         echo -e "\e[31m请先安装签名服务器\e[0m"
