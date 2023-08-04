@@ -159,6 +159,7 @@ fi
     fi
     
     fi
+    ;;
     
     "3")
         clear
