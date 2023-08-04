@@ -73,7 +73,6 @@ check_requirements
 install_whiptail
 
 while true; do
-  export NEWT_COLORS='root=,yellow'
 
   menu=$(whiptail \
     --title "签名服务器管理" \
