@@ -13,4 +13,4 @@
 bash <(curl -sL gitee.com/Wind-is-so-strong/sign/raw/master/index.sh)
 ```
 
-## QQ交流群:593543081
+## QQ交流群:692314526
