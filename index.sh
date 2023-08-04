@@ -175,9 +175,11 @@ if [ $feedback = 0 ];then
         else
             echo -e "\e[31m请输入正确的进程名称！\e[0m"
         fi
+        ;;
     *)
         echo "还在咕咕中...通宵没睡要猝死啦~"
         exit
+        ;;
     esac
     
 else
