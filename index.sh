@@ -93,7 +93,7 @@ while true; do
   if [ $feedback = 0 ]; then
     case $menu in
       1)
-        # 安装签名服务器的操作
+        bash <(curl -sL gitee.com/Wind-is-so-strong/sign/raw/master/install.sh)
         ;;
       2)
         start=$(whiptail \
