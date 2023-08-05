@@ -66,7 +66,7 @@ stop_qsign() {
       clear
       pm2 stop $pid
     echo -e "\e[1;34m $pid 已停止运行\e[0m"
-      break
+      exit 0
       ;;
     *)
       echo -e "\e[31m请输入正确的进程名称！\e[0m"
@@ -99,6 +99,7 @@ while true; do
     case $menu in
       1)
         bash <(curl -sL gitee.com/Wind-is-so-strong/sign/raw/master/install.sh)
+        break
         ;;
       2)
         start=$(whiptail \

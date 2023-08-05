@@ -62,6 +62,7 @@
         clear
             # 使用 github 代理加速下载1.1.6版本压缩包
             echo -e "正在从\e[0m \e[1;35mGHProxy\e[0m 上下载\e[35m QSign \e[0m"
+            rm -rf unidbg-fetch-qsign-1.1.6.zip
             wget https://ghproxy.com/https://github.com/fuqiuluo/unidbg-fetch-qsign/releases/download/1.1.6/unidbg-fetch-qsign-1.1.6.zip
         # 如果文件不存在
         if [ ! -e unidbg-fetch-qsign-1.1.6.zip ];then
@@ -72,6 +73,7 @@
             cd /sign
             clear
             echo -e "\e[34m正在解压文件...\e[0m"
+            rm -rf unidbg-fetch-qsign-1.1.6
             unzip unidbg-fetch-qsign-1.1.6.zip
             mv unidbg-fetch-qsign-1.1.6 unidbg-fetch-qsign
         if [ -d unidbg-fetch-qsign ];then
@@ -84,5 +86,6 @@
             echo -e '\e[32m安装完成，您可以使用启动签名服务器"启动签名服务器"选项进行启动！'
             exit 0
         fi
+        rm -rf unidbg-fetch-qsign-1.1.6.zip
     fi
 fi
