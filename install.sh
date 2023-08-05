@@ -17,22 +17,22 @@
             # 检查并安装wget
         if ! command -v wget >/dev/null 2>&1; then
         clear
-        echo "正在安装wget..."
+        echo -e "\e[1;35m正在安装wget...\e[0m"
         apt update
         apt install -y wget
         fi
 
     # 检查并安装jdk
     if ! command -v java >/dev/null 2>&1; then
-    echo "正在安装jdk..."
     clear
+    echo -e "\e[1;35m正在安装jdk...\e[0m"
     apt update
     apt install -y default-jdk
     fi
 
     # 检查并安装unzip
     if ! command -v unzip >/dev/null 2>&1; then
-    echo "正在安装unzip..."
+    echo -e "\e[1;35m正在安装unzip...\e[0m"
     apt update
     apt install -y unzip
     fi
@@ -46,7 +46,7 @@
     # 检查并安装Node.js
     if ! command -v node >/dev/null 2>&1; then
     clear
-    echo "正在安装Node.js..."
+    echo -e "\e[1;35m正在安装Node.js...\e[0m"
     curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
     apt update
     apt install -y nodejs npm
@@ -54,14 +54,14 @@
 
     # 检查并安装pm2
     if ! command -v pm2 >/dev/null 2>&1; then
-    echo "正在安装PM2..."
+    echo  -e "\e[1;35m正在安装PM2...\e[0m"
     npm install -g pm2
     fi
        # 下载     
         cd /sign
         clear
             # 使用 github 代理加速下载1.1.6版本压缩包
-            echo -e "\e[35m正在从\e[0m GHProxy 上下载\e[35m QSign \e[0m"
+            echo -e "正在从\e[0m \e[1;35mGHProxy\e[0m 上下载\e[35m QSign \e[0m"
             wget https://ghproxy.com/https://github.com/fuqiuluo/unidbg-fetch-qsign/releases/download/1.1.6/unidbg-fetch-qsign-1.1.6.zip
         # 如果文件不存在
         if [ ! -e unidbg-fetch-qsign-1.1.6.zip ];then

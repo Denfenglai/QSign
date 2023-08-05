@@ -49,8 +49,10 @@ start_qsign() {
 
   if [ -d /sign/unidbg-fetch-qsign ]; then
     cd /sign/unidbg-fetch-qsign
+    clear
     pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=$base_path"
-  fi
+    echo -e "\e[1;32m $version 已启动\e[0m"
+fi
 }
 
 stop_qsign() {
@@ -61,7 +63,10 @@ stop_qsign() {
 
   case $pid in
     8.9.63 | 8.9.68 | 8.9.70)
+      clear
       pm2 stop $pid
+    echo -e "\e[1;34m $pid 已停止运行\e[0m"
+      break
       ;;
     *)
       echo -e "\e[31m请输入正确的进程名称！\e[0m"
