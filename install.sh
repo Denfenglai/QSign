@@ -76,16 +76,96 @@
             rm -rf unidbg-fetch-qsign-1.1.6
             unzip unidbg-fetch-qsign-1.1.6.zip
             mv unidbg-fetch-qsign-1.1.6 unidbg-fetch-qsign
+            
         if [ -d unidbg-fetch-qsign ];then
+            # 写入配置文件
+# 8963
+echo "{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8963
+  },
+  "key": "114514",
+  "auto_register": true,
+  "protocol": {
+    "qua": "V1_AND_SQ_8.9.63_4194_YYB_D",
+    "version": "8.9.63",
+    "code": "4194"
+  },
+  "unidbg": {
+    "dynarmic": false,
+    "unicorn": true,
+    "debug": false
+  }
+}" > /sign/unidbg-fetch-qsign/txlib/8.9.63/txlib/config.json
+
+# 8968
+echo "{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8968
+  },
+  "key": "114514",
+  "auto_register": true,
+  "protocol": {
+    "qua": "V1_AND_SQ_8.9.68_4264_YYB_D",
+    "version": "8.9.68",
+    "code": "4264"
+  },
+  "unidbg": {
+    "dynarmic": false,
+    "unicorn": true,
+    "debug": true
+  },
+  "black_list": [
+    1008611
+  ]
+}" > /sign/unidbg-fetch-qsign/txlib/8.9.68/config.json
+
+# 8970
+echo "{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8970
+  },
+  "key": "114514",
+  "auto_register": true,
+  "protocol": {
+    "qua": "V1_AND_SQ_8.9.70_4292_HDBM_T",
+    "version": "8.9.70",
+    "code": "4292"
+  },
+  "unidbg": {
+    "dynarmic": false,
+    "unicorn": true,
+    "debug": false
+  }
+}" > /sign/unidbg-fetch-qsign/txlib/8.9.70/config.json
+
+
             echo -e "\e[1;32m QSign 安装完成！\e[0m是否立即启动？(Y/n)"
             read -r response
         if [[ $response =~ ^[Yy]$ ]] || [[ -z $response ]]; then
             cd /sign/unidbg-fetch-qsign
             bash bin/unidbg-fetch-qsign --basePath=txlib/8.9.68
         else 
-            echo -e '\e[32m安装完成，您可以使用启动签名服务器"启动签名服务器"选项进行启动！'
+            echo -e '\e[32m安装完成，您可以使用启动签名服务器"启动签名服务器"选项进行启动！\e[0m'
+            echo "==============API地址============="
+            echo "  8.9.63： http://127.0.0.1:8963"
+            echo "  8.9.68:  http://127.0.0.1:8968"
+            echo "  8.9.70:  http://127.0.0.1:8970"
+            echo "================================="
+            echo "       Key 均为默认的 114514 "
+            echo "================================="
+  echo -e "\e[33m 此信息仅显示一次，请截图保存或妥善牢记\e[0m"
             exit 0
         fi
-        rm -rf unidbg-fetch-qsign-1.1.6.zip
+                rm -rf unidbg-fetch-qsign-1.1.6.zip
+        else
+            echo -e "\e[1;31m 安装错误！请回报错误并重试！\e[0m"
+                rm -rf unidbg-fetch-qsign-1.1.6.zip
+                rm -rf unidbg-fetch-qsign-1.1.6
+                rm -rf unidbg-fetch-qsign
+                exit 1
     fi
 fi
