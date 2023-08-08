@@ -80,7 +80,7 @@
         if [ -d unidbg-fetch-qsign ];then
             # 写入配置文件
 # 8963
-echo "{
+echo '{
   "server": {
     "host": "127.0.0.1",
     "port": 8963
@@ -93,14 +93,14 @@ echo "{
     "code": "4194"
   },
   "unidbg": {
-    "dynarmic": false,
-    "unicorn": true,
+    "dynarmic": true,
+    "unicorn": false,
     "debug": false
   }
-}" > /sign/unidbg-fetch-qsign/txlib/8.9.63/txlib/config.json
+}' > /sign/unidbg-fetch-qsign/txlib/8.9.63/txlib/config.json
 
 # 8968
-echo "{
+echo '{
   "server": {
     "host": "127.0.0.1",
     "port": 8968
@@ -113,17 +113,17 @@ echo "{
     "code": "4264"
   },
   "unidbg": {
-    "dynarmic": false,
-    "unicorn": true,
-    "debug": true
+    "dynarmic": true,
+    "unicorn": false,
+    "debug": false
   },
   "black_list": [
     1008611
   ]
-}" > /sign/unidbg-fetch-qsign/txlib/8.9.68/config.json
+}' > /sign/unidbg-fetch-qsign/txlib/8.9.68/config.json
 
 # 8970
-echo "{
+echo '{
   "server": {
     "host": "127.0.0.1",
     "port": 8970
@@ -136,11 +136,11 @@ echo "{
     "code": "4292"
   },
   "unidbg": {
-    "dynarmic": false,
-    "unicorn": true,
+    "dynarmic": true,
+    "unicorn": false,
     "debug": false
   }
-}" > /sign/unidbg-fetch-qsign/txlib/8.9.70/config.json
+}' > /sign/unidbg-fetch-qsign/txlib/8.9.70/config.json
 
 
             echo -e "\e[1;32m QSign 安装完成！\e[0m是否立即启动？(Y/n)"

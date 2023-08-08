@@ -81,7 +81,7 @@ while true; do
 
   menu=$(whiptail \
     --title "签名服务器管理" \
-    --menu "QSign" \
+    --menu "咕咕中" \
     17 40 10 \
     "1" "安装签名服务器" \
     "2" "启动签名服务器" \
