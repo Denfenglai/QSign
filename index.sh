@@ -184,7 +184,25 @@ while true; do
             
         ;;
       6)
-        # 修改端口
+        clear
+        if [ -d /sign/unidbg-fetch-qsign ];then
+        echo -e "\e[1;33m请输入你要修改的端口号[1024-65535]: \e[0m";read -p port
+    if [[ $port -ge 1024 && $port -le 65535 ]]; then
+        # 使用 sed 命令替换文件中的端口号
+sed -i "s/\"port\": [0-9]*/\"port\": $port/" /sign/unidbg-fetch-qsign/txlib/8.9.70/config.json
+sed -i "s/\"port\": [0-9]*/\"port\": $port/" /sign/unidbg-fetch-qsign/txlib/8.9.68/config.json
+sed -i "s/\"port\": [0-9]*/\"port\": $port/" /sign/unidbg-fetch-qsign/txlib/8.9.63/config.json
+        echo -e "\e[1;32m端口号已成功修改为 $port \e[0m"
+        echo "服务器外网访问须在防火墙或安全组开放对应端口"
+        echo -en "回车继续";read -r ""
+    else
+        echo -e "\e[1;31m输入的端口号不在合理范围内\e[0m"
+        exit 1
+    fi
+    else
+        echo -e "\e[31m请先安装签名服务器\e[0m"
+        exit 1
+    fi
         ;;
       7)
         # 前台启动的操作
