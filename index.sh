@@ -197,7 +197,7 @@ while true; do
 
         echo -e "\e[1;32m端口号已成功修改为 $port \e[0m"
         echo "服务器外网访问须在防火墙或安全组开放对应端口"
-        echo -en "回车继续"; read -r ""
+        echo -en "回车继续";read -r
     else
         echo -e "\e[1;31m输入的端口号不在合理范围内\e[0m"
         exit 1
