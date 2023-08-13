@@ -68,6 +68,7 @@
         apt update -y
         apt install -y nodejs
         done
+    fi
 
     # 检查并安装pm2
     if ! command -v pm2 >/dev/null 2>&1; then
