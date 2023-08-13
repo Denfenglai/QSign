@@ -44,13 +44,30 @@
     fi
 
     # 检查并安装Node.js
-    if ! command -v node >/dev/null 2>&1; then
-    clear
-    echo -e "\e[1;35m正在安装Node.js...\e[0m"
-    curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
-    apt update
-    apt install -y nodejs npm
-    fi
+    if ! command -v node &> /dev/null
+        then
+        echo "- Node.js 未安装"
+        Ubuntuv=$(lsb_release -r | awk '{print $2}')
+        until npm -v
+        do
+        if [ "$Ubuntuv" == "18.04" ]; then
+          rm /etc/apt/sources.list.d/nodesource.list
+          bash <(curl -sL https://deb.nodesource.com/setup_16.x)
+        elif [ "$Ubuntuv" == "22.04" ]; then
+          rm /etc/apt/sources.list.d/nodesource.list
+          bash <(curl -sL https://deb.nodesource.com/setup_18.x)
+        elif [ "$Ubuntuv" == "22.10" ]; then
+          rm /etc/apt/sources.list.d/nodesource.list
+          bash <(curl -sL https://deb.nodesource.com/setup_18.x)
+        else
+          rm /etc/apt/sources.list.d/nodesource.list
+          bash <(curl -sL https://deb.nodesource.com/setup_16.x)
+        fi
+        apt remove nodejs -y
+        apt autoremove -y
+        apt update -y
+        apt install -y nodejs
+        done
 
     # 检查并安装pm2
     if ! command -v pm2 >/dev/null 2>&1; then
