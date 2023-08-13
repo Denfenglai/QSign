@@ -172,10 +172,11 @@ while true; do
         clear
     if [ -d /sign/unidbg-fetch-qsign ];then
         echo -e "\e[1;33m请输入你要修改的key\e[0m"
-        echo -n "新的Key："; read -r new_key
+        echo -n "Key："; read -r new_key
         sed -i "s/\"key\": \"[0-9]*\",/\"key\": \"$new_key\",/" /sign/unidbg-fetch-qsign/txlib/8.9.70/config.json
         sed -i "s/\"key\": \"[0-9]*\",/\"key\": \"$new_key\",/" /sign/unidbg-fetch-qsign/txlib/8.9.68/config.json
         sed -i "s/\"key\": \"[0-9]*\",/\"key\": \"$new_key\",/" /sign/unidbg-fetch-qsign/txlib/8.9.63/config.json
+      echo -en "你的Key已修改为$new_key 回车返回";read -r ""
     else
         echo -e "\e[31m请先安装签名服务器\e[0m"
         exit 1
@@ -183,7 +184,7 @@ while true; do
             
         ;;
       6)
-        # 修改端口的操作
+        # 修改端口
         ;;
       7)
         # 前台启动的操作

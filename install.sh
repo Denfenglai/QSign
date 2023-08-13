@@ -76,6 +76,7 @@
             rm -rf unidbg-fetch-qsign-1.1.6
             unzip unidbg-fetch-qsign-1.1.6.zip
             mv unidbg-fetch-qsign-1.1.6 unidbg-fetch-qsign
+            rm -rf unidbg-fetch-qsign-1.1.6.zip
             
         if [ -d unidbg-fetch-qsign ];then
             # 写入配置文件
@@ -147,7 +148,7 @@ echo '{
             read -r response
         if [[ $response =~ ^[Yy]$ ]] || [[ -z $response ]]; then
             cd /sign/unidbg-fetch-qsign
-            bash bin/unidbg-fetch-qsign --basePath=txlib/8.9.68
+            bash bin/unidbg-fetch-qsign --basePath=txlib/8.9.70
         else 
             echo -e '\e[32m安装完成，您可以使用启动签名服务器"启动签名服务器"选项进行启动！\e[0m'
             echo "==============API地址============="
