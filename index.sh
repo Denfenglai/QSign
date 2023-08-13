@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "bash <(curl -sL gitee.com/Wind-is-so-strong/sign/raw/master/index.sh)"> /usr/bin/sign
+chmod 777 /usr/bin/sign
+
 check_requirements() {
   if ! [ "$(uname)" == "Linux" ]; then
     echo -e "\033[31m请使用Linux！\033[0m"
@@ -147,6 +150,7 @@ while true; do
           "3" "8.9.70[推荐]" \
           3>&1 1>&2 2>&3)
         start_qsign $start
+        break
         ;;
       3)
         stop_qsign
@@ -161,13 +165,22 @@ while true; do
           "3" "8.9.70[推荐]" \
           3>&1 1>&2 2>&3)
         logs_qsign $logs
+        break
         ;;
 
       5)
         clear
-        # if [ -d /sign/unidbg-fetch-qsign ];then
-        # echo -e "\e[1;33m请输入你要修改的key\e[0m"
-        # echo -n "Key："; read -r new_key
+    if [ -d /sign/unidbg-fetch-qsign ];then
+        echo -e "\e[1;33m请输入你要修改的key\e[0m"
+        echo -n "新的Key："; read -r new_key
+        sed -i "s/\"key\": \"[0-9]*\",/\"key\": \"$new_key\",/" /sign/unidbg-fetch-qsign/txlib/8.9.70/config.json
+        sed -i "s/\"key\": \"[0-9]*\",/\"key\": \"$new_key\",/" /sign/unidbg-fetch-qsign/txlib/8.9.68/config.json
+        sed -i "s/\"key\": \"[0-9]*\",/\"key\": \"$new_key\",/" /sign/unidbg-fetch-qsign/txlib/8.9.63/config.json
+    else
+        echo -e "\e[31m请先安装签名服务器\e[0m"
+        exit 1
+    fi
+            
         ;;
       6)
         # 修改端口的操作
@@ -176,7 +189,7 @@ while true; do
         # 前台启动的操作
         ;;
       8)
-        if [ -d /sign ]
+        if [ -d /sign ];then
         echo -e "\e[33m确定要删除签名服务器吗？此操作是不可逆的(Y/n)\e[0m"
         read -r response
         if [[ $response =~ ^[Yy]$]] || [[ -z $response ]]; then
