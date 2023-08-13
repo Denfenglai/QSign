@@ -12,7 +12,7 @@
             fi
             
             # 安装环境
-            echo -e "\e[35m正在安装 QSign 所需的环境\e[0m"
+            echo -e "\e[35m正在检查 QSign 所需的环境\e[0m"
             sleep 2
             # 检查并安装wget
         if ! command -v wget >/dev/null 2>&1; then
@@ -97,7 +97,7 @@ echo '{
     "unicorn": false,
     "debug": false
   }
-}' > /sign/unidbg-fetch-qsign/txlib/8.9.63/txlib/config.json
+}'> "/sign/unidbg-fetch-qsign/txlib/8.9.63/txlib/config.json"
 
 # 8968
 echo '{
@@ -120,7 +120,7 @@ echo '{
   "black_list": [
     1008611
   ]
-}' > /sign/unidbg-fetch-qsign/txlib/8.9.68/config.json
+}'> "/sign/unidbg-fetch-qsign/txlib/8.9.68/config.json"
 
 # 8970
 echo '{
@@ -140,7 +140,7 @@ echo '{
     "unicorn": false,
     "debug": false
   }
-}' > /sign/unidbg-fetch-qsign/txlib/8.9.70/config.json
+}'> "/sign/unidbg-fetch-qsign/txlib/8.9.70/config.json"
 
 
             echo -e "\e[1;32m QSign 安装完成！\e[0m是否立即启动？(Y/n)"

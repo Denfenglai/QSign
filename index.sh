@@ -52,8 +52,43 @@ start_qsign() {
     clear
     pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=$base_path"
     echo -e "\e[1;32m $version 已启动\e[0m"
+  else 
+   echo -e "\e[1;31m请先安装签名服务器\e[0m"
+     exit 1
 fi
 }
+
+
+logs_qsign() {
+  local version
+
+  case $1 in
+    1)
+      version="8.9.63"
+      ;;
+    2)
+      version="8.9.68"
+      ;;
+    3)
+      version="8.9.70"
+      ;;
+    *)
+      echo -e "\e[31m无效的版本选择！\e[0m"
+      return
+  esac
+
+  if [ -d /sign/unidbg-fetch-qsign ]; then
+    cd /sign/unidbg-fetch-qsign
+    clear
+    pm2 logs $version
+    echo -e "\e[1;32m $version 已启动\e[0m"
+    else
+     echo -e "\e[1;31m请先安装签名服务器\e[0m"
+     exit 1
+fi
+}
+
+
 
 stop_qsign() {
   clear
@@ -117,10 +152,22 @@ while true; do
         stop_qsign
         ;;
       4)
-        # 查看日志的操作
+        logs=$(whiptail \
+        --title "查看日志"
+        --menu "请选择要查看的日志版本\n没显示则代表没有启动" \
+        15 35 5 \
+          "1" "8.9.63" \
+          "2" "8.9.68" \
+          "3" "8.9.70[推荐]" \
+          3>&1 1>&2 2>&3)
+        logs_qsign $logs
         ;;
+
       5)
-        # 修改key的操作
+        clear
+        # if [ -d /sign/unidbg-fetch-qsign ];then
+        # echo -e "\e[1;33m请输入你要修改的key\e[0m"
+        # echo -n "Key："; read -r new_key
         ;;
       6)
         # 修改端口的操作
@@ -129,7 +176,20 @@ while true; do
         # 前台启动的操作
         ;;
       8)
-        # 卸载相关内容的操作
+        if [ -d /sign ]
+        echo -e "\e[33m确定要删除签名服务器吗？此操作是不可逆的(Y/n)\e[0m"
+        read -r response
+        if [[ $response =~ ^[Yy]$]] || [[ -z $response ]]; then
+        rm -rf /sign
+        echo -e "\e[32mQSign签名服务器已彻底删除\e[0m"
+        sleep 5
+        else
+            exit 0
+            fi
+        else
+            echo -e "\e[35m笨比！你都没装我怎么删？你这个大笨蛋！\e[0m"
+            sleep 4
+            fi
         ;;
       9)
         echo 默认信息 不做修改则永远相同
