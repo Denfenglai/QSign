@@ -192,7 +192,7 @@ while true; do
         if [ -d /sign ];then
         echo -e "\e[33m确定要删除签名服务器吗？此操作是不可逆的(Y/n)\e[0m"
         read -r response
-        if [[ $response =~ ^[Yy]$]] || [[ -z $response ]]; then
+    if [[ $response =~ ^[Yy]$ ]] || [[ -z $response ]]; then
         rm -rf /sign
         echo -e "\e[32mQSign签名服务器已彻底删除\e[0m"
         sleep 5
