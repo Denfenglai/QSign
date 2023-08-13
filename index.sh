@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# 写入快捷键
 echo "bash <(curl -sL gitee.com/Wind-is-so-strong/sign/raw/master/index.sh)"> /usr/bin/sign
 chmod 777 /usr/bin/sign
 
+# 检查用户
 check_requirements() {
   if ! [ "$(uname)" == "Linux" ]; then
     echo -e "\033[31m请使用Linux！\033[0m"
@@ -19,7 +21,7 @@ check_requirements() {
     exit 0
   fi
 }
-
+# 安装whiptail
 install_whiptail() {
   if ! command -v whiptail >/dev/null 2>&1; then
     echo "正在安装whiptail..."
@@ -27,7 +29,7 @@ install_whiptail() {
     apt-get install -y whiptail
   fi
 }
-
+# 启动
 start_qsign() {
   local version
   local base_path
@@ -61,7 +63,39 @@ start_qsign() {
 fi
 }
 
+# 前台启动
+fo_qsign() {
+  local version
+  local base_path
 
+  case $1 in
+    1)
+      version="8.9.63"
+      base_path="txlib/$version"
+      ;;
+    2)
+      version="8.9.68"
+      base_path="txlib/$version"
+      ;;
+    3)
+      version="8.9.70"
+      base_path="txlib/$version"
+      ;;
+    *)
+      echo -e "\e[31m无效的版本选择！\e[0m"
+      return
+  esac
+
+  if [ -d /sign/unidbg-fetch-qsign ]; then
+    cd /sign/unidbg-fetch-qsign
+    clear
+    bash bin/unidbg-fetch-qsign --basePath=$base_path
+  else 
+   echo -e "\e[1;31m请先安装签名服务器\e[0m"
+     exit 1
+fi
+}
+# 查看日志
 logs_qsign() {
   local version
 
@@ -92,7 +126,7 @@ fi
 }
 
 
-
+# 停止运行
 stop_qsign() {
   clear
   pm2 ls
@@ -208,7 +242,16 @@ else
 fi
         ;;
       7)
-        # 前台启动的操作
+        fo_start=$(whiptail \
+          --title "启动QSign" \
+          --menu "请选择要启动的版本：" \
+          15 35 5 \
+          "1" "8.9.63" \
+          "2" "8.9.68" \
+          "3" "8.9.70[推荐]" \
+          3>&1 1>&2 2>&3)
+        fo_qsign $fo_start
+        break
         ;;
       8)
         if [ -d /sign ];then
