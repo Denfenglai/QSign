@@ -4,7 +4,7 @@
 echo '
 case $1 in
 
-    -n 8970)
+    "-n 8970")
       version="8.9.70"
       base_path="txlib/$version"
       if [ -d /sign/unidbg-fetch-qsign ]; then
@@ -18,7 +18,7 @@ case $1 in
 fi
     ;;
 
-    -n 8968)
+    "-n 8968")
     version="8.9.68"
       base_path="txlib/$version"
       if [ -d /sign/unidbg-fetch-qsign ]; then
@@ -32,7 +32,7 @@ fi
 fi
     ;;
 
-    -n 8963)
+    "-n 8963")
     version="8.9.63"
       base_path="txlib/$version"
       if [ -d /sign/unidbg-fetch-qsign ]; then
@@ -46,21 +46,21 @@ fi
 fi
     ;;
 
-    -s 8963)
+    "-s 8963")
     $pid=8963
     pm2 stop $pid
     echo -e "\e[1;34m $pid 已停止运行\e[0m"
       exit 0
       ;;
 
-    -s 8970)
+    "-s 8970")
     $pid=8970
     pm2 stop $pid
     echo -e "\e[1;34m $pid 已停止运行\e[0m"
       exit 0
       ;;
 
-      -s 8968)
+      "-s 8968")
       $pid=8968
       pm2 stop $pid
       echo -e "\e[1;34m $pid 已停止运行\e[0m"
