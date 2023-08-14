@@ -71,7 +71,7 @@ fi
 bash <(curl -sL gitee.com/Wind-is-so-strong/sign/raw/master/index.sh)"> /usr/bin/sign
     ;;
 esac
-'> /usr/bin/sign
+' > /usr/bin/sign
 chmod 777 /usr/bin/sign
 
 # 检查用户
