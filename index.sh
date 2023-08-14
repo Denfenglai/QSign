@@ -47,21 +47,21 @@ case $1 in
     ;;
 
     "-s 8963")
-      pid=8963
+      pid=8.9.63
       pm2 stop $pid
       echo -e "\e[1;34m $pid 已停止运行\e[0m"
       exit 0
       ;;
 
     "-s 8970")
-      pid=8970
+      pid=8.9.70
       pm2 stop $pid
       echo -e "\e[1;34m $pid 已停止运行\e[0m"
       exit 0
       ;;
 
     "-s 8968")
-      pid=8968
+      pid=8.9.68
       pm2 stop $pid
       echo -e "\e[1;34m $pid 已停止运行\e[0m"
       exit 0
