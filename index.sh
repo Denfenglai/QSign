@@ -68,7 +68,7 @@ case $1 in
       ;;
 
     *)      
-      bash <(curl -sL gitee.com/Wind-is-so-strong/sign/raw/master/index.sh)"
+      bash <(curl -sL gitee.com/Wind-is-so-strong/sign/raw/master/index.sh)
     ;;
 esac
 ' > /usr/bin/sign
