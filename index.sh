@@ -8,67 +8,67 @@ case $1 in
       version="8.9.70"
       base_path="txlib/$version"
       if [ -d /sign/unidbg-fetch-qsign ]; then
-    cd /sign/unidbg-fetch-qsign
-    clear
-    pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=$base_path"
-    echo -e "\e[1;32m $version 已启动\e[0m"
-  else 
-   echo -e "\e[1;31m请先安装签名服务器\e[0m"
-     exit 1
-fi
+        cd /sign/unidbg-fetch-qsign
+        clear
+        pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=$base_path"
+        echo -e "\e[1;32m $version 已启动\e[0m"
+      else 
+        echo -e "\e[1;31m请先安装签名服务器\e[0m"
+        exit 1
+      fi
     ;;
 
     "-n 8968")
-    version="8.9.68"
+      version="8.9.68"
       base_path="txlib/$version"
       if [ -d /sign/unidbg-fetch-qsign ]; then
-    cd /sign/unidbg-fetch-qsign
-    clear
-    pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=$base_path"
-    echo -e "\e[1;32m $version 已启动\e[0m"
-  else 
-   echo -e "\e[1;31m请先安装签名服务器\e[0m"
-     exit 1
-fi
+        cd /sign/unidbg-fetch-qsign
+        clear
+        pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=$base_path"
+        echo -e "\e[1;32m $version 已启动\e[0m"
+      else 
+        echo -e "\e[1;31m请先安装签名服务器\e[0m"
+        exit 1
+      fi
     ;;
 
     "-n 8963")
-    version="8.9.63"
+      version="8.9.63"
       base_path="txlib/$version"
       if [ -d /sign/unidbg-fetch-qsign ]; then
-    cd /sign/unidbg-fetch-qsign
-    clear
-    pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=$base_path"
-    echo -e "\e[1;32m $version 已启动\e[0m"
-  else 
-   echo -e "\e[1;31m请先安装签名服务器\e[0m"
-     exit 1
-fi
+        cd /sign/unidbg-fetch-qsign
+        clear
+        pm2 start --name $version "bash bin/unidbg-fetch-qsign --basePath=$base_path"
+        echo -e "\e[1;32m $version 已启动\e[0m"
+      else 
+        echo -e "\e[1;31m请先安装签名服务器\e[0m"
+        exit 1
+      fi
     ;;
 
     "-s 8963")
-    $pid=8963
-    pm2 stop $pid
-    echo -e "\e[1;34m $pid 已停止运行\e[0m"
+      pid=8963
+      pm2 stop $pid
+      echo -e "\e[1;34m $pid 已停止运行\e[0m"
       exit 0
       ;;
 
     "-s 8970")
-    $pid=8970
-    pm2 stop $pid
-    echo -e "\e[1;34m $pid 已停止运行\e[0m"
+      pid=8970
+      pm2 stop $pid
+      echo -e "\e[1;34m $pid 已停止运行\e[0m"
       exit 0
       ;;
 
-      "-s 8968")
-      $pid=8968
+    "-s 8968")
+      pid=8968
       pm2 stop $pid
       echo -e "\e[1;34m $pid 已停止运行\e[0m"
       exit 0
       ;;
 
     *)      
-bash <(curl -sL gitee.com/Wind-is-so-strong/sign/raw/master/index.sh)"> /usr/bin/sign
+      bash <(curl -sL gitee.com/Wind-is-so-strong/sign/raw/master/index.sh)"
     ;;
 esac
 ' > /usr/bin/sign
