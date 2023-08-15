@@ -6,10 +6,10 @@ case $1 in
 
     -i)
 sed -i "/sign_api_addr/d" $Yz/config/config/bot.yaml
-sed -i "\$a\sign_api_addr: $3" config/config/bot.yaml
+sed -i "\$a\sign_api_addr: $2" config/config/bot.yaml
 API=$(grep sign_api_addr config/config/bot.yaml)
 API=$(echo ${API} | sed "s/sign_api_addr//g")
-echo -e "\e[34m您的API链接已修改为 ${green}${API}\e[0m"
+echo -e "\e[34m您的API链接已修改为 \e[32m${API}\e[0m"
 exit
     ;;
 
