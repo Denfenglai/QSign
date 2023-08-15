@@ -2,7 +2,7 @@
 
 # 写入快捷键
 echo '
-Yz=$(head -n 1 $HOME/.Yunzai)
+Yz=$(head -n 1 "${HOME}/.Yunzai")
 case $1 in
 
     -i)
