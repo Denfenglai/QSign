@@ -7,8 +7,8 @@ case $1 in
 
     -i)
 sed -i "/sign_api_addr/d" $Yz/config/config/bot.yaml
-sed -i "\$a\sign_api_addr: $2" config/config/bot.yaml
-API=$(grep sign_api_addr config/config/bot.yaml)
+sed -i "\$a\sign_api_addr: $2" $Yz/config/config/bot.yaml
+API=$(grep sign_api_addr $Yz/config/config/bot.yaml)
 API=$(echo ${API} | sed "s/sign_api_addr//g")
 echo -e "\e[34m您的API链接已修改为 \e[32m${API}\e[0m"
 exit
@@ -188,7 +188,7 @@ while true; do
   if [ $feedback = 0 ]; then
     case $menu in
       1)
-        bash <(curl -sL gitee.com/Wind-is-so-strong/sign/raw/master/install.sh)
+        bash <(curl -sL gitee.com/DengFengLai-F/sign/raw/master/install.sh)
         break
         ;;
       2)
