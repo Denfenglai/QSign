@@ -263,9 +263,12 @@ while true; do
     if [ -d /sign/unidbg-fetch-qsign ];then
         echo -e "\e[1;33m请输入你要修改的key\e[0m"
         echo -n "Key："; read -r new_key
-        sed -i "s/\"key\": \"[0-9]*\",/\"key\": \"$new_key\",/" /sign/unidbg-fetch-qsign/txlib/8.9.70/config.json
-        sed -i "s/\"key\": \"[0-9]*\",/\"key\": \"$new_key\",/" /sign/unidbg-fetch-qsign/txlib/8.9.68/config.json
-        sed -i "s/\"key\": \"[0-9]*\",/\"key\": \"$new_key\",/" /sign/unidbg-fetch-qsign/txlib/8.9.63/config.json
+        # 循环
+        a=("8.9.63" "8.9.68" "8.9.71" "8.9.73" "3.5.1" "3.5.2")
+        for i in "${a[@]}"; do
+        sed -i "s/\"key\": \"[0-9]*\",/\"key\": \"$new_key\",/" /sign/unidbg-fetch-qsign/txlib/$i/config.json
+        done
+        
       echo -en "你的Key已修改为$new_key 回车返回";read -r ""
     else
         echo -e "\e[31m请先安装签名服务器\e[0m"
@@ -281,9 +284,12 @@ while true; do
 
     if [ "$port" -ge 1024 ] && [ "$port" -le 65535 ]; then
         # 使用 sed 命令替换文件中的端口号
-        sed -i "s/\"port\": [0-9]*/\"port\": $port/" /sign/unidbg-fetch-qsign/txlib/8.9.70/config.json
-        sed -i "s/\"port\": [0-9]*/\"port\": $port/" /sign/unidbg-fetch-qsign/txlib/8.9.68/config.json
-        sed -i "s/\"port\": [0-9]*/\"port\": $port/" /sign/unidbg-fetch-qsign/txlib/8.9.63/config.json
+        a=("8.9.63" "8.9.68" "8.9.71" "8.9.73" "3.5.1" "3.5.2")
+        # 循环遍历
+        for i in "${a[@]}"; do
+        sed -i "s/\"port\": [0-9]*/\"port\": $port/" /sign/unidbg-fetch-qsign/txlib/$i/config.json
+        done
+        
 
         echo -e "\e[1;32m端口号已成功修改为 $port \e[0m"
         echo "服务器外网访问须在防火墙或安全组开放对应端口"
