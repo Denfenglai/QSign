@@ -61,7 +61,19 @@ start_qsign() {
       base_path="txlib/$version"
       ;;
     3)
-      version="8.9.70"
+      version="8.9.71"
+      base_path="txlib/$version"
+      ;;
+    4)
+      version="8.9.73"
+      base_path="txlib/$version"
+      ;;
+    5)
+      version="3.5.1"
+      base_path="txlib/$version"
+      ;;
+    6)
+      version="3.5.2"
       base_path="txlib/$version"
       ;;
     *)
@@ -95,7 +107,19 @@ fo_qsign() {
       base_path="txlib/$version"
       ;;
     3)
-      version="8.9.70"
+      version="8.9.71"
+      base_path="txlib/$version"
+      ;;
+    4)
+      version="8.9.73"
+      base_path="txlib/$version"
+      ;;
+    5)
+      version="3.5.1"
+      base_path="txlib/$version"
+      ;;
+    6)
+      version="3.5.2"
       base_path="txlib/$version"
       ;;
     *)
@@ -151,7 +175,7 @@ stop_qsign() {
   read -r pid
 
   case $pid in
-    8.9.63 | 8.9.68 | 8.9.70)
+    8.9.63 | 8.9.68 | 8.9.71 | 8.9.73)
       clear
       pm2 stop $pid
     echo -e "\e[1;34m $pid 已停止运行\e[0m"
@@ -198,7 +222,10 @@ while true; do
           15 35 5 \
           "1" "8.9.63" \
           "2" "8.9.68" \
-          "3" "8.9.70[推荐]" \
+          "3" "8.9.71" \
+          "4" "8.9.73" \
+          "5" "[Tim]3.5.1" \
+          "6" "[Tim]3.5.2" \
           3>&1 1>&2 2>&3)
         start_qsign $start
         break
@@ -213,7 +240,10 @@ while true; do
         15 35 5 \
           "1" "8.9.63" \
           "2" "8.9.68" \
-          "3" "8.9.70" \
+          "3" "8.9.71" \
+          "4" "8.9.73" \
+          "5" "[Tim]3.5.1" \
+          "6" "[Tim]3.5.2" \
           3>&1 1>&2 2>&3)
         logs_qsign $logs
         break
@@ -265,7 +295,10 @@ fi
           15 35 5 \
           "1" "8.9.63" \
           "2" "8.9.68" \
-          "3" "8.9.70[推荐]" \
+          "3" "8.9.71" \
+          "4" "8.9.73" \
+          "5" "[Tim]3.5.1" \
+          "6" "[Tim]3.5.2" \
           3>&1 1>&2 2>&3)
         fo_qsign $fo_start
         break
@@ -288,13 +321,12 @@ fi
         ;;
       9)
         echo 默认信息 不做修改则永远相同
-        echo "==============API地址============="
-        echo "  8.9.63： http://127.0.0.1:8963"
-        echo "  8.9.68:  http://127.0.0.1:8968"
-        echo "  8.9.70:  http://127.0.0.1:8970"
-        echo "================================="
-        echo "       Key 均为默认的 114514 "
-        echo "================================="
+            echo "==============API地址============="
+            echo "    签名API地址均为:127.0.0.1:8080"
+            echo "  如果出现端口占用请先关闭其他版本的签名"
+            echo "================================="
+            echo "       Key 均为默认的 114514 "
+            echo "================================="
         echo
         echo -n "回车返回";read -p ""
         ;;

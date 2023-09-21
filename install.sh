@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# 定义变量
+    File_name=unidbg-fetch-qsign-1.2.1.zip
+    directory=unidbg-fetch-qsign-1.2.1
+    link=https://github.com/fuqiuluo/unidbg-fetch-qsign/releases/download/1.2.1/unidbg-fetch-qsign-1.2.1.zip
+
+
         if [ ! -d /sign ];then
             mkdir /sign
         fi
@@ -20,6 +26,12 @@
         echo -e "\e[1;35m正在安装wget...\e[0m"
         apt update
         apt install -y wget
+        fi
+        
+        if ! command -v numfmt >/dev/null 2>&1; then
+        clear
+        apt update
+        apt install -y numfmt
         fi
 
     # 检查并安装jdk
@@ -80,10 +92,10 @@
         clear
             # 使用 github 代理加速下载1.1.6版本压缩包
             echo -e "正在从\e[0m \e[1;35mGHProxy\e[0m 上下载\e[35m QSign \e[0m"
-            rm -rf unidbg-fetch-qsign-1.1.6.zip
-            wget https://ghproxy.com/https://github.com/fuqiuluo/unidbg-fetch-qsign/releases/download/1.1.6/unidbg-fetch-qsign-1.1.6.zip
+            rm -rf $File_name
+            wget https://ghproxy.com/$link
         # 如果文件不存在
-        if [ ! -e unidbg-fetch-qsign-1.1.6.zip ];then
+        if [ ! -e $File_name ];then
            echo -e "\e[1;31mQSign下载失败！请加群692314526反馈\e[0m"
            echo -e "\e[1;33m请务必附带截图！\n请务必附带截图！\n请务必附带截图！\n\e[0m重要的事说三遍..."
             exit 1
@@ -91,100 +103,31 @@
             cd /sign
             clear
             echo -e "\e[34m正在解压文件...\e[0m"
-            rm -rf unidbg-fetch-qsign-1.1.6
-            unzip unidbg-fetch-qsign-1.1.6.zip
-            mv unidbg-fetch-qsign-1.1.6 unidbg-fetch-qsign
-            rm -rf unidbg-fetch-qsign-1.1.6.zip
+            rm -rf $directory
+            unzip $File_name
+            mv $directory unidbg-fetch-qsign
+            rm -rf $File_name
             
-        if [ -d unidbg-fetch-qsign ];then
-            # 写入配置文件
-# 8963
-echo '{
-  "server": {
-    "host": "0.0.0.0",
-    "port": 8963
-  },
-  "key": "114514",
-  "auto_register": true,
-  "protocol": {
-    "qua": "V1_AND_SQ_8.9.63_4194_YYB_D",
-    "version": "8.9.63",
-    "code": "4194"
-  },
-  "unidbg": {
-    "dynarmic": true,
-    "unicorn": false,
-    "debug": false
-  }
-}'> "/sign/unidbg-fetch-qsign/txlib/8.9.63/txlib/config.json"
 
-# 8968
-echo '{
-  "server": {
-    "host": "0.0.0.0",
-    "port": 8968
-  },
-  "key": "114514",
-  "auto_register": true,
-  "protocol": {
-    "qua": "V1_AND_SQ_8.9.68_4264_YYB_D",
-    "version": "8.9.68",
-    "code": "4264"
-  },
-  "unidbg": {
-    "dynarmic": true,
-    "unicorn": false,
-    "debug": false
-  },
-  "black_list": [
-    1008611
-  ]
-}'> "/sign/unidbg-fetch-qsign/txlib/8.9.68/config.json"
-
-# 8970
-echo '{
-  "server": {
-    "host": "0.0.0.0",
-    "port": 8970
-  },
-  "key": "114514",
-  "auto_register": true,
-  "protocol": {
-    "qua": "V1_AND_SQ_8.9.70_4292_HDBM_T",
-    "version": "8.9.70",
-    "code": "4292"
-  },
-  "unidbg": {
-    "dynarmic": true,
-    "unicorn": false,
-    "debug": false
-  }
-}'> "/sign/unidbg-fetch-qsign/txlib/8.9.70/config.json"
-
-
-            echo -e "\e[1;32m QSign 安装完成！\e[0m是否立即启动？(Y/n)"
-            read -r response
-        if [[ $response =~ ^[Yy]$ ]] || [[ -z $response ]]; then
-            cd /sign/unidbg-fetch-qsign
-            bash bin/unidbg-fetch-qsign --basePath=txlib/8.9.70
-        else 
-            echo -e '\e[32m安装完成，您可以使用启动签名服务器"启动签名服务器"选项进行启动！\e[0m'
+            echo -e '\e[32m QSign 安装完成，您可以使用启动签名服务器"启动签名服务器"选项进行启动！\e[0m'
             echo "==============API地址============="
-            echo "  8.9.63： http://127.0.0.1:8963"
-            echo "  8.9.68:  http://127.0.0.1:8968"
-            echo "  8.9.70:  http://127.0.0.1:8970"
+            echo "    签名API地址均为:127.0.0.1:8080"
+            echo "  如果出现端口占用请先关闭其他版本的签名"
             echo "================================="
             echo "       Key 均为默认的 114514 "
             echo "================================="
   echo -e "\e[33m 此信息仅显示一次，请截图保存或妥善牢记\e[0m"
-            exit 0
-        fi
-                rm -rf unidbg-fetch-qsign-1.1.6.zip
-        else
-            echo -e "\e[1;31m 安装错误！请回报错误并重试！\e[0m"
-                rm -rf unidbg-fetch-qsign-1.1.6.zip
-                rm -rf unidbg-fetch-qsign-1.1.6
-                rm -rf unidbg-fetch-qsign
-                exit 1
+        
+        file_size=$(stat -c%s "$File_name")
+        formatted_size=$(numfmt --to=iec-i --suffix=B --format="%.2f" $file_size)
+        rm -rf $File_name
+        echo "已为您自动删除安装包！释放了$formatted_size"
+        exit 0
+    else
+        echo -e "\e[1;31m 安装错误！请回报错误并重试！\e[0m"
+            rm -rf $File_name
+            rm -rf $directory
+            rm -rf unidbg-fetch-qsign
+            exit 1
     fi
 fi
