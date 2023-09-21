@@ -148,7 +148,16 @@ logs_qsign() {
       version="8.9.68"
       ;;
     3)
-      version="8.9.70"
+      version="8.9.71"
+      ;;
+    4)
+      version="8.9.73"
+      ;;
+    5)
+      version="3.5.1"
+      ;;
+    6)
+      version="3.5.2"
       ;;
     *)
       echo -e "\e[31m无效的版本选择！\e[0m"
