@@ -120,13 +120,13 @@
             echo "             ICQQ的签名API链接为:"
             echo "        127.0.0.1:8080/sign?key=114514"
         # 无用的东西
-        file_size1=$(stat -c%s "$File_name")
-        file_size2=$(stat -c%s "$File_name2")
-        total_size=$(numfmt --to=iec-i --suffix=B --format="%.2f" $((file_size1 + file_size2)))
-        formatted_size=$(numfmt --to=iec-i --suffix=B --format="%.2f" $total_size)
-        rm -rf "$File_name"
-        rm -rf "$File_name2"
-        echo "已为您自动删除安装包！为您释放了 $formatted_size"
+file_size1=$(stat -c%s "$File_name")
+file_size2=$(stat -c%s "$File_name2")
+total_size=$(numfmt --to=iec-i --suffix=B --format="%.2f" --from=iec-i $((file_size1 + file_size2)))
+formatted_size=$(numfmt --to=iec-i --suffix=B --format="%.2f" --from=iec-i $total_size)
+rm -rf "$File_name"
+rm -rf "$File_name2"
+echo "已为您自动删除安装包！释放了 $formatted_size"
 
         exit 0
     else
