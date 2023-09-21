@@ -106,7 +106,6 @@
             rm -rf $directory
             unzip $File_name
             mv $directory unidbg-fetch-qsign
-            rm -rf $File_name
             
             if [ -d unidbg-fetch-qsign ];then
             echo -e '\e[32m QSign 安装完成，您可以使用启动签名服务器"启动签名服务器"选项进行启动！\e[0m'
