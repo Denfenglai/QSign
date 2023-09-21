@@ -108,7 +108,7 @@
             mv $directory unidbg-fetch-qsign
             rm -rf $File_name
             
-
+            if [ -d unidbg-fetch-qsign ];then
             echo -e '\e[32m QSign 安装完成，您可以使用启动签名服务器"启动签名服务器"选项进行启动！\e[0m'
             echo "==============API地址============="
             echo "    签名API地址均为:127.0.0.1:8080"
@@ -117,7 +117,7 @@
             echo "       Key 均为默认的 114514 "
             echo "================================="
   echo -e "\e[33m 此信息仅显示一次，请截图保存或妥善牢记\e[0m"
-        
+        # 无用的东西
         file_size=$(stat -c%s "$File_name")
         formatted_size=$(numfmt --to=iec-i --suffix=B --format="%.2f" $file_size)
         rm -rf $File_name
