@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # 定义变量
-    File_name=unidbg-fetch-qsign-1.2.1.zip
-    directory=unidbg-fetch-qsign-1.2.1
-    link=https://github.com/fuqiuluo/unidbg-fetch-qsign/releases/download/1.2.1/unidbg-fetch-qsign-1.2.1.zip
+    File_name=unidbg-fetch-qsign.3.zip
+    File_name2=unidbg-fetch-qsign-1.1.9.zip
+    directory=unidbg-fetch-qsign-1.1.9
+    link=https://github.com/fuqiuluo/unidbg-fetch-qsign/releases/download/1.1.9/unidbg-fetch-qsign.3.zip
 
 
         if [ ! -d /sign ];then
@@ -105,6 +106,7 @@
             echo -e "\e[34m正在解压文件...\e[0m"
             rm -rf $directory
             unzip $File_name
+            unzip $File_name2
             mv $directory unidbg-fetch-qsign
             
             if [ -d unidbg-fetch-qsign ];then
