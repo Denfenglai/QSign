@@ -269,7 +269,7 @@ while true; do
         sed -i "s/\"key\": \"[0-9]*\",/\"key\": \"$new_key\",/" /sign/unidbg-fetch-qsign/txlib/$i/config.json
         done
         
-      echo -en "你的Key已修改为$new_key 回车返回";read -r ""
+      echo -en "你的Key已修改为$new_key 回车返回"; read -r
     else
         echo -e "\e[31m请先安装签名服务器\e[0m"
         exit 1
@@ -293,7 +293,7 @@ while true; do
 
         echo -e "\e[1;32m端口号已成功修改为 $port \e[0m"
         echo "服务器外网访问须在防火墙或安全组开放对应端口"
-        echo -en "回车继续";read -r
+        echo -en "回车继续"; read -r
     else
         echo -e "\e[1;31m输入的端口号不在合理范围内\e[0m"
         exit 1
