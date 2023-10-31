@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # 定义变量
-    File_name=unidbg-fetch-qsign.3.zip
-    File_name2=unidbg-fetch-qsign-1.1.9.zip
-    directory=unidbg-fetch-qsign-1.1.9
-    link=https://github.com/fuqiuluo/unidbg-fetch-qsign/releases/download/1.1.9/unidbg-fetch-qsign.3.zip
+    File_name=unidbg-fetch-qsign.zip # 下载文件名
+    directory=unidbg-fetch-qsign     # 解压缩后名
+    # 下载地址
+    link=https://dengfenglai.cloud/api/unidbg-fetch-qsign.zip
 
 
         if [ ! -d /sign ];then
@@ -92,21 +92,20 @@
         cd /sign
         clear
             # 使用 github 代理加速下载1.1.6版本压缩包
-            echo -e "正在从\e[0m \e[1;35mGHProxy\e[0m 上下载\e[35m QSign \e[0m"
+            echo -e "正在从\e[0m \e[1;35mdengfenglai.cloud\e[0m 上下载\e[35m QSign \e[0m"
             rm -rf $File_name
-            wget https://ghproxy.com/$link
+            wget $link
         # 如果文件不存在
         if [ ! -e $File_name ];then
            echo -e "\e[1;31mQSign下载失败！请加群692314526反馈\e[0m"
            echo -e "\e[1;33m请务必附带截图！\n请务必附带截图！\n请务必附带截图！\n\e[0m重要的事说三遍..."
-            exit 1
+           exit 1
         else
             cd /sign
             clear
             echo -e "\e[34m正在解压文件...\e[0m"
             rm -rf $directory
             unzip $File_name
-            unzip $File_name2
             mv $directory unidbg-fetch-qsign
             
             if [ -d unidbg-fetch-qsign ];then
@@ -123,7 +122,6 @@
         file_size=$(stat -c%s "$File_name")
         formatted_size=$(numfmt --to=iec-i --suffix=B --format="%.2f" $file_size)
         rm -rf $File_name
-        rm -rf $File_name2
         echo "已为您自动删除安装包！释放了$formatted_size"
         exit 0
     else
